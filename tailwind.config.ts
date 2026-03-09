@@ -84,11 +84,21 @@ export default {
           "50%": { opacity: "1", transform: "scale(1.1)" },
           "100%": { opacity: "0.5", transform: "scale(1)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg) scale(1)" },
+          "50%": { transform: "translateY(-40px) rotate(8deg) scale(1.1)" },
+        },
+        "bg-pan": {
+          "0%": { backgroundPosition: "0% 0%" },
+          "100%": { backgroundPosition: "100% 100%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         pulse: "pulse 2s infinite",
+        float: "float 4s ease-in-out infinite",
+        "bg-pan": "bg-pan 20s linear infinite",
       },
     },
   },

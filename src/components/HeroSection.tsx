@@ -1,7 +1,10 @@
 import LeadFormDialog from "@/components/LeadFormDialog";
 
-const ChainLinkDeco = () => (
-  <div className="relative h-[140px] w-[80px] rounded-[40px] border-[12px] border-white/10">
+const ChainLinkDeco = ({ delay = 0 }: { delay?: number }) => (
+  <div 
+    className="relative h-[140px] w-[80px] rounded-[40px] border-[12px] border-white/10 animate-float"
+    style={{ animationDelay: `${delay}s` }}
+  >
     <div className="absolute left-[30px] top-[30px] h-[140px] w-[80px] rounded-[40px] border-[12px] border-white/10" />
   </div>
 );
@@ -11,16 +14,9 @@ const HeroSection = () => {
     <section className="relative overflow-hidden bg-white pb-24 pt-32">
       {/* Blue decorative background */}
       <div className="absolute -right-[10%] -top-[20%] z-0 flex h-[140%] w-[60%] -skew-x-[10deg] flex-wrap items-center justify-center gap-5 overflow-hidden bg-blue-vivid">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <ChainLinkDeco key={i} />
+        {Array.from({ length: 15 }).map((_, i) => (
+          <ChainLinkDeco key={i} delay={i * 0.4} />
         ))}
-        {/* Pattern Overlay */}
-        <div
-          className="absolute inset-0 opacity-50"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L 30 10 L 30 30 L 10 30 Z' stroke='rgba(255,255,255,0.05)' fill='none' stroke-width='2' rx='5'/%3E%3C/svg%3E")`,
-          }}
-        />
       </div>
 
       <div className="container relative z-10">
@@ -33,7 +29,7 @@ const HeroSection = () => {
           }}
         />
 
-        <div className="relative z-[2] max-w-[600px]">
+        <div className="relative z-[2] max-w-[600px] animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.1em] text-blue-vivid">
             Legal Tech Platform
           </h4>
