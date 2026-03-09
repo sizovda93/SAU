@@ -1,5 +1,5 @@
 -- 001_initial_schema.sql
--- Начальная схема базы данных IronChain SAU
+-- Начальная схема базы данных SAU.PRO
 
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 

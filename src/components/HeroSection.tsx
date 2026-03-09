@@ -1,3 +1,5 @@
+import LeadFormDialog from "@/components/LeadFormDialog";
+
 const ChainLinkDeco = () => (
   <div className="relative h-[140px] w-[80px] rounded-[40px] border-[12px] border-white/10">
     <div className="absolute left-[30px] top-[30px] h-[140px] w-[80px] rounded-[40px] border-[12px] border-white/10" />
@@ -42,17 +44,14 @@ const HeroSection = () => {
             Единая экосистема для арбитражных управляющих. Автоматическая генерация документов, синхронизация с КАД и умный помощник для ваших клиентов.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center rounded-lg bg-blue-vivid px-8 py-4 text-base font-semibold text-white shadow-btn-primary transition-all hover:-translate-y-0.5 hover:bg-blue-sky hover:shadow-btn-primary-hover"
-            >
-              Попробовать бесплатно
-            </a>
+            <LeadFormDialog
+              triggerClassName="inline-flex items-center justify-center rounded-lg bg-blue-vivid px-8 py-4 text-base font-semibold text-white shadow-btn-primary transition-all hover:-translate-y-0.5 hover:bg-blue-sky hover:shadow-btn-primary-hover"
+            />
             <a
               href="#"
               className="inline-flex items-center justify-center rounded-lg border-2 border-navy px-8 py-4 text-base font-semibold text-navy transition-all hover:bg-navy hover:text-white"
             >
-              Демонстрация
+              Презентация
             </a>
           </div>
         </div>

@@ -13,10 +13,10 @@ const IntegrationSection = () => {
         <div className="flex flex-wrap items-center gap-16">
           <div className="min-w-[300px] flex-1">
             <h2 className="mb-6 text-3xl font-bold tracking-tight text-white md:text-[2.5rem]">
-              Полная синхронизация с Kad.Arbitr.ru
+              Полная синхронизация с Kad.arbitr.ru
             </h2>
             <p className="mb-8 text-lg text-white/70">
-              Забудьте о ручном мониторинге. IronChain каждые 15 минут проверяет картотеку арбитражных дел и мгновенно обновляет статусы в вашей CRM.
+              Забудьте о ручном мониторинге. SAU.PRO каждые 15 минут проверяет картотеку арбитражных дел и мгновенно обновляет статусы в вашей CRM.
             </p>
             <ul className="space-y-4">
               <li className="flex items-center gap-2.5">
@@ -44,7 +44,7 @@ const IntegrationSection = () => {
               </div>
               <div className="animate-pulse text-3xl text-blue-vivid">→</div>
               <div className="text-center">
-                <div className="mb-2.5 font-bold">IronChain</div>
+                <div className="mb-2.5 font-bold">SAU.PRO</div>
                 <div className="mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-xl bg-blue-vivid">
                   <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />

@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="mb-4 font-logo text-2xl font-bold uppercase tracking-wider text-white">
-              IRONCHAIN
+              SAU.PRO
             </div>
             <p className="mt-4 text-sm text-white/40">
               Профессиональное ПО для арбитражных управляющих. Соответствует 127-ФЗ.
@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6 text-center">
-          © 2024 IronChain Systems. Все права защищены.
+          © 2024 SAU.PRO Systems. Все права защищены.
         </div>
       </div>
     </footer>

@@ -71,7 +71,7 @@ export function AdminPanel() {
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Админ Панель</h1>
-                <p className="text-gray-500">IronChain SAU</p>
+                <p className="text-gray-500">SAU.PRO</p>
               </div>
               <Button variant="outline" onClick={handleLogout}>
                 <LogOut className="mr-2" size={18} />

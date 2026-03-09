@@ -1,15 +1,15 @@
 -- 002_seed_data.sql
--- Начальные данные для IronChain SAU
+-- Начальные данные для SAU.PRO
 
 -- Настройки сайта
 INSERT INTO site_settings (setting_key, setting_value) VALUES
-  ('site_title', 'IronChain | Система для Арбитражных Управляющих'),
+  ('site_title', 'SAU.PRO | Система для Арбитражных Управляющих'),
   ('site_description', 'Современная цифровая платформа для автоматизации процедур банкротства'),
   ('contact_email', 'info@ironchain.ru'),
   ('contact_phone', '+7 (999) 000-00-00'),
   ('hero_title', 'Система для арбитражных управляющих нового поколения'),
   ('hero_subtitle', 'Автоматизация всех этапов процедуры банкротства: от подготовки документов до отчётности в Арбитражный суд'),
-  ('footer_copyright', '© 2025 IronChain. Все права защищены.')
+  ('footer_copyright', '© 2025 SAU.PRO. Все права защищены.')
 ON CONFLICT (setting_key) DO NOTHING;
 
 -- Демо-модули (курсы)

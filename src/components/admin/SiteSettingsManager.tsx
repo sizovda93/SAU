@@ -85,7 +85,7 @@ export function SiteSettingsManager() {
               <Input
                 value={settings['site_title'] || ''}
                 onChange={(e) => handleSettingChange('site_title', e.target.value)}
-                placeholder="IronChain SAU"
+                placeholder="SAU.PRO"
               />
             </div>
             <div>
@@ -135,7 +135,7 @@ export function SiteSettingsManager() {
               <Input
                 value={settings['footer_copyright'] || ''}
                 onChange={(e) => handleSettingChange('footer_copyright', e.target.value)}
-                placeholder="© 2025 IronChain"
+                placeholder="© 2025 SAU.PRO"
               />
             </div>
             <div className="flex gap-2 pt-4">

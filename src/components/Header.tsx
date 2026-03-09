@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "Возможности", href: "#features" },
   { label: "Тарифы", href: "#pricing" },
+  { label: "Для Партнеров", href: "#partner-cabinet" },
   { label: "Кабинет АУ", href: "#cabinet" },
   { label: "Кабинет Должника", href: "#debtor" },
 ];
@@ -18,7 +19,7 @@ const Header = () => {
           <svg viewBox="0 0 24 24" className="h-6 w-6 fill-blue-vivid">
             <path d="M7 7h10v3l-4 4 4 4v3H7v-3l4-4-4-4z" fill="currentColor" />
           </svg>
-          IronChain
+          SAU.PRO
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -34,12 +35,6 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#"
-            className="hidden rounded-lg bg-blue-vivid px-6 py-2 text-sm font-semibold text-white shadow-btn-primary transition-all hover:-translate-y-0.5 hover:bg-blue-sky hover:shadow-btn-primary-hover md:inline-flex"
-          >
-            Войти
-          </a>
           <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -59,12 +54,6 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
-            <a
-              href="#"
-              className="mt-2 rounded-lg bg-blue-vivid px-6 py-2 text-center text-sm font-semibold text-white"
-            >
-              Войти
-            </a>
           </nav>
         </div>
       )}
