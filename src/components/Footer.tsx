@@ -43,53 +43,23 @@ const legalDocuments = [
 
 const Footer = () => {
   return (
-    <footer className="bg-navy py-16 text-white/70">
+    <footer className="bg-navy py-12 text-white/40">
       <div className="container">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <div className="mb-4 font-logo text-2xl font-bold uppercase tracking-wider text-white">
-              SAU.PRO
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-white/50">
-              Профессиональное ПО для арбитражных управляющих. Решение для автоматизации
-              процессов, безопасной работы с данными и удобного взаимодействия с клиентами.
-            </p>
+        <div className="flex flex-col items-center gap-6">
+          <div className="font-logo text-2xl font-bold uppercase tracking-wider text-white">
+            SAU.PRO
           </div>
+          <p className="text-center text-sm text-white/40">
+            Профессиональное ПО для арбитражных управляющих. Соответствует 127-ФЗ.
+          </p>
 
-          <div>
-            <h4 className="mb-6 font-bold text-white">Платформа</h4>
-            <ul className="space-y-2 text-sm">
-              <li>Возможности</li>
-              <li>Безопасность</li>
-              <li>Интеграции</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-6 font-bold text-white">Клиентам</h4>
-            <ul className="space-y-2 text-sm">
-              <li>Вход в кабинет</li>
-              <li>База знаний</li>
-              <li>Техподдержка</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-6 font-bold text-white">Контакты</h4>
-            <p className="mb-2 text-sm">+7 (495) 000-00-00</p>
-            <p className="text-sm">hello@ironchain.ru</p>
-            <p className="mt-4 text-sm text-white/50">г. Москва, Пресненская наб., 12</p>
-          </div>
-        </div>
-
-        <div className="mt-12 border-t border-white/10 pt-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center text-sm text-white/60">
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
             {legalDocuments.map((document) => (
               <Dialog key={document.title}>
                 <DialogTrigger asChild>
                   <button
                     type="button"
-                    className="text-inherit transition-colors hover:text-white"
+                    className="text-white/50 no-underline transition-colors hover:text-white/80"
                   >
                     {document.title}
                   </button>
@@ -115,11 +85,11 @@ const Footer = () => {
                 </DialogContent>
               </Dialog>
             ))}
-          </div>
+          </nav>
+        </div>
 
-          <div className="mt-6 text-center text-sm text-white/40">
-            © 2026 SAU.PRO Systems. Все права защищены.
-          </div>
+        <div className="mt-8 border-t border-white/10 pt-6 text-center text-sm">
+          © {new Date().getFullYear()} SAU.PRO Systems. Все права защищены.
         </div>
       </div>
     </footer>
