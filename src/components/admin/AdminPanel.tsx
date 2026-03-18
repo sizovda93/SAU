@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { UsersTable } from './UsersTable';
-import { MediaUploader } from './MediaUploader';
-import { CoursesManager } from './CoursesManager';
-import { ReviewsManager } from './ReviewsManager';
-import { SiteSettingsManager } from './SiteSettingsManager';
-import { TeachersManager } from './TeachersManager';
 import { LeadsManager } from './LeadsManager';
+import { ScreenshotsManager } from './ScreenshotsManager';
 import { LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -21,7 +16,7 @@ export function AdminPanel() {
   const [error, setError] = useState('');
 
   const handleLogin = () => {
-    const adminPassword = '279286';
+    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || '279286';
 
     if (password === adminPassword) {
       localStorage.setItem('admin_authenticated', 'true');
@@ -82,78 +77,32 @@ export function AdminPanel() {
 
           <div className="mx-auto max-w-7xl px-4 py-8">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="mb-8 grid w-full grid-cols-7">
+              <TabsList className="mb-8 grid w-full grid-cols-3">
                 <TabsTrigger value="dashboard">Обзор</TabsTrigger>
-                <TabsTrigger value="courses">Модули</TabsTrigger>
-                <TabsTrigger value="teachers">Эксперты</TabsTrigger>
-                <TabsTrigger value="media">Медиа</TabsTrigger>
                 <TabsTrigger value="leads">Заявки</TabsTrigger>
-                <TabsTrigger value="feedback">Отзывы</TabsTrigger>
-                <TabsTrigger value="settings">Настройки</TabsTrigger>
+                <TabsTrigger value="screenshots">Скриншоты</TabsTrigger>
               </TabsList>
 
               <TabsContent value="dashboard" className="space-y-6">
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-                  <div className="rounded-lg bg-white p-6 shadow">
-                    <p className="mb-2 text-gray-500">Всего пользователей</p>
-                    <p className="text-3xl font-bold">-</p>
-                  </div>
-                  <div className="rounded-lg bg-white p-6 shadow">
-                    <p className="mb-2 text-gray-500">Активных модулей</p>
-                    <p className="text-3xl font-bold">-</p>
-                  </div>
-                  <div className="rounded-lg bg-white p-6 shadow">
-                    <p className="mb-2 text-gray-500">Загруженных файлов</p>
-                    <p className="text-3xl font-bold">-</p>
-                  </div>
-                  <div className="rounded-lg bg-white p-6 shadow">
-                    <p className="mb-2 text-gray-500">Новых отзывов</p>
-                    <p className="text-3xl font-bold">-</p>
-                  </div>
-                </div>
-
                 <div className="rounded-lg bg-white p-6 shadow">
                   <h2 className="mb-4 text-2xl font-bold">Быстрые действия</h2>
                   <div className="space-y-2">
-                    <Button variant="outline" className="w-full justify-start" onClick={() => setActiveTab('courses')}>
-                      Добавить новый модуль
+                    <Button variant="outline" className="w-full justify-start" onClick={() => setActiveTab('leads')}>
+                      Просмотреть заявки
                     </Button>
-                    <Button variant="outline" className="w-full justify-start" onClick={() => setActiveTab('media')}>
-                      Загрузить медиа файл
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start" onClick={() => setActiveTab('dashboard')}>
-                      Добавить пользователя
+                    <Button variant="outline" className="w-full justify-start" onClick={() => setActiveTab('screenshots')}>
+                      Управление скриншотами
                     </Button>
                   </div>
                 </div>
-
-                <div className="rounded-lg bg-white p-6 shadow">
-                  <UsersTable />
-                </div>
-              </TabsContent>
-
-              <TabsContent value="courses" className="rounded-lg bg-white p-6 shadow">
-                <CoursesManager />
-              </TabsContent>
-
-              <TabsContent value="teachers" className="rounded-lg bg-white p-6 shadow">
-                <TeachersManager />
-              </TabsContent>
-
-              <TabsContent value="media" className="rounded-lg bg-white p-6 shadow">
-                <MediaUploader />
               </TabsContent>
 
               <TabsContent value="leads" className="rounded-lg bg-white p-6 shadow">
                 <LeadsManager />
               </TabsContent>
 
-              <TabsContent value="feedback" className="rounded-lg bg-white p-6 shadow">
-                <ReviewsManager />
-              </TabsContent>
-
-              <TabsContent value="settings" className="rounded-lg bg-white p-6 shadow">
-                <SiteSettingsManager />
+              <TabsContent value="screenshots" className="rounded-lg bg-white p-6 shadow">
+                <ScreenshotsManager />
               </TabsContent>
             </Tabs>
           </div>

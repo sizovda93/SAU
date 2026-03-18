@@ -4,7 +4,6 @@ import FeaturesSection from "@/components/FeaturesSection";
 import IntegrationSection from "@/components/IntegrationSection";
 import PartnerCabinetSection from "@/components/PartnerCabinetSection";
 import LeadCaptureSection from "@/components/LeadCaptureSection";
-import CabinetSection from "@/components/CabinetSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -16,7 +15,6 @@ const Index = () => {
       <IntegrationSection />
       <PartnerCabinetSection />
       <LeadCaptureSection />
-      <CabinetSection />
       <Footer />
     </div>
   );
