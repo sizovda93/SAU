@@ -26,15 +26,15 @@ const creditorMobileScreenshots = [
 const IPhoneFrame = ({ children, label, onClick }: { children: React.ReactNode; label: string; onClick?: () => void }) => (
   <div className="flex flex-col items-center gap-4">
     <div className={`relative mx-auto w-full max-w-[260px] ${onClick ? "cursor-pointer" : ""}`} onClick={onClick}>
-      <div className="relative overflow-hidden rounded-[40px] border-[6px] border-[#1a1a1a] bg-[#1a1a1a] shadow-xl">
-        <div className="absolute left-1/2 top-2 z-10 h-[22px] w-[90px] -translate-x-1/2 rounded-full bg-[#1a1a1a]" />
+      <div className="relative overflow-hidden rounded-[40px] border-[6px] border-blue-vivid bg-blue-vivid shadow-xl">
+        <div className="absolute left-1/2 top-2 z-10 h-[22px] w-[90px] -translate-x-1/2 rounded-full bg-blue-vivid" />
         <div className="relative aspect-[9/19.5] w-full overflow-hidden rounded-[34px] bg-slate-50">
           {children}
         </div>
       </div>
-      <div className="absolute -right-[8px] top-[100px] h-[40px] w-[3px] rounded-r-sm bg-[#2a2a2a]" />
-      <div className="absolute -left-[8px] top-[80px] h-[24px] w-[3px] rounded-l-sm bg-[#2a2a2a]" />
-      <div className="absolute -left-[8px] top-[112px] h-[24px] w-[3px] rounded-l-sm bg-[#2a2a2a]" />
+      <div className="absolute -right-[8px] top-[100px] h-[40px] w-[3px] rounded-r-sm bg-blue-vivid" />
+      <div className="absolute -left-[8px] top-[80px] h-[24px] w-[3px] rounded-l-sm bg-blue-vivid" />
+      <div className="absolute -left-[8px] top-[112px] h-[24px] w-[3px] rounded-l-sm bg-blue-vivid" />
     </div>
     <h3 className="text-center text-lg font-bold tracking-tight text-navy">
       {label}
