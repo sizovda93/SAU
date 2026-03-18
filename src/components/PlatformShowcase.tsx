@@ -27,7 +27,6 @@ const IPhoneFrame = ({ children, label, onClick }: { children: React.ReactNode; 
   <div className="flex flex-col items-center gap-4">
     <div className={`relative mx-auto w-full max-w-[260px] ${onClick ? "cursor-pointer" : ""}`} onClick={onClick}>
       <div className="relative overflow-hidden rounded-[40px] border-[6px] border-blue-vivid bg-blue-vivid shadow-xl">
-        <div className="absolute left-1/2 top-2 z-10 h-[22px] w-[90px] -translate-x-1/2 rounded-full bg-blue-vivid" />
         <div className="relative aspect-[9/19.5] w-full overflow-hidden rounded-[34px] bg-slate-50">
           {children}
         </div>

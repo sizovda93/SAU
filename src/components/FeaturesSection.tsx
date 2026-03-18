@@ -1,4 +1,68 @@
 import { FileText, Layers, MessageSquare, Smartphone } from "lucide-react";
+import { useEffect, useRef } from "react";
+
+const MatrixBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / (fontSize * 1.8));
+    const drops: number[] = Array.from({ length: columns }, () =>
+      Math.random() * -50
+    );
+
+    const chars = "00 01 10 11".split(" ");
+
+    const draw = () => {
+      ctx.fillStyle = "rgba(245, 247, 250, 0.15)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize * 1.8;
+        const y = drops[i] * fontSize;
+
+        const opacity = 0.06 + Math.random() * 0.06;
+        ctx.fillStyle = `rgba(42, 109, 255, ${opacity})`;
+        ctx.fillText(char, x, y);
+
+        if (y > canvas.height && Math.random() > 0.985) {
+          drops[i] = 0;
+        }
+        drops[i] += 0.3;
+      }
+    };
+
+    const interval = setInterval(draw, 80);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-0 h-full w-full"
+    />
+  );
+};
 
 const features = [
   {
@@ -30,16 +94,8 @@ const features = [
 const FeaturesSection = () => {
   return (
     <section id="features" className="relative bg-off-white py-24">
-      {/* Chain background pattern */}
-      <div
-        className="absolute inset-0 z-0 opacity-5"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 C 20 10 30 10 30 20 L 30 40 C 30 50 20 50 20 40 Z' stroke='%232A6DFF' stroke-width='4' fill='none'/%3E%3Cpath d='M35 20 C 35 10 45 10 45 20 L 45 40 C 45 50 35 50 35 40 Z' stroke='%232A6DFF' stroke-width='4' fill='none'/%3E%3C/svg%3E")`,
-          backgroundSize: "60px 60px",
-          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-        }}
-      />
+      {/* Matrix falling background */}
+      <MatrixBackground />
 
       <div className="container relative z-[2]">
         <div className="mx-auto mb-16 max-w-[700px] text-center">

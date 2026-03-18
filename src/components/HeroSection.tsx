@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getSettings, SiteSetting } from "@/lib/api";
+import LeadFormDialog from "@/components/LeadFormDialog";
 
 const ChainLinkDeco = ({ delay = 0 }: { delay?: number }) => (
   <div
@@ -12,6 +13,7 @@ const ChainLinkDeco = ({ delay = 0 }: { delay?: number }) => (
 
 const HeroSection = () => {
   const [heroVideo, setHeroVideo] = useState<string | null>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     getSettings()
@@ -25,18 +27,21 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden bg-white pb-24 pt-32">
       {/* Blue decorative background / Video */}
-      <div className="absolute -right-[10%] -top-[20%] z-0 h-[140%] w-[60%] -skew-x-[10deg] overflow-hidden bg-blue-vivid">
-        {heroVideo ? (
+      <div className={`absolute -right-[10%] -top-[20%] z-0 h-[140%] w-[60%] -skew-x-[10deg] overflow-hidden ${videoReady ? "bg-transparent" : "bg-blue-vivid"}`}>
+        {heroVideo && (
           <video
             src={heroVideo}
-            className="h-full w-full skew-x-[10deg] scale-110 object-cover"
+            className={`h-full w-full skew-x-[10deg] scale-110 object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
             autoPlay
             loop
             muted
             playsInline
+            onCanPlayThrough={() => setVideoReady(true)}
+            onPlaying={() => setVideoReady(true)}
           />
-        ) : (
-          <div className="flex h-full w-full flex-wrap items-center justify-center gap-5">
+        )}
+        {!videoReady && (
+          <div className="absolute inset-0 flex h-full w-full flex-wrap items-center justify-center gap-5">
             {Array.from({ length: 15 }).map((_, i) => (
               <ChainLinkDeco key={i} delay={i * 0.4} />
             ))}
@@ -73,12 +78,10 @@ const HeroSection = () => {
             >
               Войти в платформу
             </a>
-            <a
-              href="#"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-navy px-8 py-4 text-base font-semibold text-navy transition-all hover:bg-navy hover:text-white"
-            >
-              Презентация
-            </a>
+            <LeadFormDialog
+              triggerLabel="Оставить заявку на подключение"
+              triggerClassName="inline-flex items-center justify-center rounded-lg border-2 border-navy px-8 py-4 text-base font-semibold text-navy transition-all hover:bg-navy hover:text-white"
+            />
           </div>
         </div>
       </div>

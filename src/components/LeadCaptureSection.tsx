@@ -57,7 +57,6 @@ const LeadCaptureSection = () => {
             <LeadForm
               source="partner_section_form"
               submitLabel="Получить консультацию"
-              legalText="Нажимая кнопку, вы оставляете заявку на обратную связь и демонстрацию платформы."
             />
           </div>
         </div>
