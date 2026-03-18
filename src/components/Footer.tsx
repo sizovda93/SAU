@@ -1,45 +1,30 @@
 const Footer = () => {
   return (
-    <footer className="bg-navy py-16 text-white/40">
+    <footer className="bg-navy py-12 text-white/40">
       <div className="container">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <div className="mb-4 font-logo text-2xl font-bold uppercase tracking-wider text-white">
-              SAU.PRO
-            </div>
-            <p className="mt-4 text-sm text-white/40">
-              Профессиональное ПО для арбитражных управляющих. Соответствует 127-ФЗ.
-            </p>
+        <div className="flex flex-col items-center gap-6">
+          <div className="font-logo text-2xl font-bold uppercase tracking-wider text-white">
+            SAU.PRO
           </div>
+          <p className="text-center text-sm text-white/40">
+            Профессиональное ПО для арбитражных управляющих. Соответствует 127-ФЗ.
+          </p>
 
-          <div>
-            <h4 className="mb-6 font-bold text-white">Платформа</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-inherit no-underline transition-colors hover:text-white/70">Возможности</a></li>
-              <li><a href="#" className="text-inherit no-underline transition-colors hover:text-white/70">Безопасность</a></li>
-              <li><a href="#" className="text-inherit no-underline transition-colors hover:text-white/70">Интеграции</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-6 font-bold text-white">Клиентам</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-inherit no-underline transition-colors hover:text-white/70">Вход в кабинет</a></li>
-              <li><a href="#" className="text-inherit no-underline transition-colors hover:text-white/70">База знаний</a></li>
-              <li><a href="#" className="text-inherit no-underline transition-colors hover:text-white/70">Техподдержка</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-6 font-bold text-white">Контакты</h4>
-            <p className="mb-2">+7 (495) 000-00-00</p>
-            <p>hello@ironchain.ru</p>
-            <p className="mt-4">г. Москва, Пресненская наб., 12</p>
-          </div>
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+            <a href="/privacy" className="text-white/50 no-underline transition-colors hover:text-white/80">
+              Политика конфиденциальности
+            </a>
+            <a href="/cookies" className="text-white/50 no-underline transition-colors hover:text-white/80">
+              Политика использования cookies
+            </a>
+            <a href="/consent" className="text-white/50 no-underline transition-colors hover:text-white/80">
+              Согласие на обработку персональных данных
+            </a>
+          </nav>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-center">
-          © 2024 SAU.PRO Systems. Все права защищены.
+        <div className="mt-8 border-t border-white/10 pt-6 text-center text-sm">
+          © {new Date().getFullYear()} SAU.PRO Systems. Все права защищены.
         </div>
       </div>
     </footer>

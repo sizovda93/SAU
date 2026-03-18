@@ -1,4 +1,4 @@
-import { FileText, Layers, MessageSquare } from "lucide-react";
+import { FileText, Layers, MessageSquare, Smartphone } from "lucide-react";
 
 const features = [
   {
@@ -18,6 +18,12 @@ const features = [
     title: "Ассистент АУ",
     description:
       "ИИ анализирует ход дела и подсказывает следующие шаги. Напоминания о сроках публикаций в ЕФРСБ и заседаниях.",
+  },
+  {
+    icon: Smartphone,
+    title: "Приложение для должника",
+    description:
+      "Должник видит статус дела, получает уведомления о заседаниях и сроках, загружает документы и общается с управляющим через чат — всё в одном приложении без звонков и визитов.",
   },
 ];
 
@@ -45,7 +51,7 @@ const FeaturesSection = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2">
           {features.map((feature) => (
             <div
               key={feature.title}

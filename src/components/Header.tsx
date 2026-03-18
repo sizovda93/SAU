@@ -13,7 +13,6 @@ const navItems: NavItem[] = [
   { label: "Возможности", href: "/#features" },
   { label: "Платформа", href: "/platform" },
   { label: "Тарифы", href: "#", stub: true },
-  { label: "Для партнеров", href: "/#partner-cabinet" },
 ];
 
 const Header = () => {
@@ -53,7 +52,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container relative flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 font-logo text-2xl font-bold uppercase tracking-wider text-navy">
           <svg viewBox="0 0 24 24" className="h-6 w-6 fill-blue-vivid">
             <path d="M7 7h10v3l-4 4 4 4v3H7v-3l4-4-4-4z" fill="currentColor" />
@@ -61,7 +60,7 @@ const Header = () => {
           SAU.PRO
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 lg:flex">
           {navItems.map((item) => (
             <button
               key={item.label}
