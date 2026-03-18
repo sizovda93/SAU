@@ -4,9 +4,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "Возможности", href: "#features" },
   { label: "Тарифы", href: "#pricing" },
-  { label: "Для Партнеров", href: "#partner-cabinet" },
-  { label: "Кабинет АУ", href: "#cabinet" },
-  { label: "Кабинет Должника", href: "#debtor" },
+  { label: "Для партнеров", href: "#partner-cabinet" },
 ];
 
 const Header = () => {
