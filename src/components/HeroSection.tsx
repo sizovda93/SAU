@@ -27,25 +27,19 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden bg-white pb-24 pt-32">
       {/* Blue decorative background / Video */}
-      <div className={`absolute -right-[10%] -top-[20%] z-0 h-[140%] w-[60%] -skew-x-[10deg] overflow-hidden ${videoReady ? "bg-transparent" : "bg-blue-vivid"}`}>
+      <div className="absolute -right-[10%] -top-[20%] z-0 h-[160%] w-[60%] -skew-x-[10deg] overflow-hidden">
         {heroVideo && (
           <video
+            key={heroVideo}
             src={heroVideo}
-            className={`h-full w-full skew-x-[10deg] scale-110 object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-0 h-full w-full skew-x-[10deg] scale-110 object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
             autoPlay
             loop
             muted
             playsInline
-            onCanPlayThrough={() => setVideoReady(true)}
+            preload="none"
             onPlaying={() => setVideoReady(true)}
           />
-        )}
-        {!videoReady && (
-          <div className="absolute inset-0 flex h-full w-full flex-wrap items-center justify-center gap-5">
-            {Array.from({ length: 15 }).map((_, i) => (
-              <ChainLinkDeco key={i} delay={i * 0.4} />
-            ))}
-          </div>
         )}
       </div>
 
