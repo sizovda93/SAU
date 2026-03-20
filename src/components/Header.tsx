@@ -52,8 +52,8 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur-md">
-      <div className="container relative flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 font-logo text-2xl font-bold uppercase tracking-wider text-navy">
+      <div className="container flex h-16 items-center">
+        <Link to="/" className="flex items-center gap-2.5">
           <svg viewBox="0 0 64 64" className="h-8 w-8">
             <circle cx="32" cy="32" r="30" fill="#C8A84E" />
             <circle cx="32" cy="32" r="26" fill="#3B5998" />
@@ -67,23 +67,33 @@ const Header = () => {
               <rect x="16" y="43" width="32" height="2.5" rx="0.5" />
             </g>
           </svg>
-          SAU.PRO
+          <div className="flex flex-col leading-tight">
+            <span className="font-logo text-2xl font-bold uppercase tracking-wider text-navy">SAU.PRO</span>
+            <span className="text-[0.6rem] font-medium uppercase tracking-wide text-slate-400">Система арбитражного управления</span>
+          </div>
         </Link>
 
-        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 lg:flex">
-          {navItems.map((item) => (
-            <button
-              key={item.label}
-              type="button"
-              onClick={() => handleNavClick(item)}
-              className="text-[0.95rem] font-medium text-slate transition-colors hover:text-blue-vivid"
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-8">
+          <nav className="hidden items-center gap-8 lg:flex">
+            {navItems.map((item) => (
+              <button
+                key={item.label}
+                type="button"
+                onClick={() => handleNavClick(item)}
+                className="text-[0.95rem] font-medium text-slate transition-colors hover:text-blue-vivid"
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+          <a
+            href="https://sau.pro/debtors"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-lg bg-blue-vivid px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 lg:inline-flex"
+          >
+            Войти
+          </a>
           <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -103,6 +113,14 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
+            <a
+              href="https://sau.pro/debtors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-blue-vivid px-3 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+            >
+              Войти
+            </a>
           </nav>
         </div>
       )}
