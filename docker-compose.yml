@@ -1,4 +1,19 @@
 services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ironchain_sau
+      POSTGRES_USER: sau_app
+      POSTGRES_PASSWORD: sau_secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sau_app -d ironchain_sau"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
   api:
     build:
       context: .
@@ -8,8 +23,16 @@ services:
     environment:
       - API_PORT=3001
       - UPLOAD_DIR=/app/uploads
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=ironchain_sau
+      - DATABASE_USER=sau_app
+      - DATABASE_PASSWORD=sau_secret
     volumes:
       - uploads:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
     restart: unless-stopped
 
   nginx:
@@ -18,10 +41,11 @@ services:
       dockerfile: Dockerfile
       target: nginx
     ports:
-      - "8888:80"
+      - "6001:80"
     depends_on:
       - api
     restart: unless-stopped
 
 volumes:
   uploads:
+  pgdata:
