@@ -11,7 +11,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: "Возможности", href: "/#features" },
-  { label: "Платформа", href: "/platform" },
+  { label: "Платформа", href: "/showcase" },
   { label: "Тарифы", href: "#", stub: true },
 ];
 

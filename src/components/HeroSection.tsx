@@ -65,7 +65,7 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="https://sau.pro/"
+              href="https://sau.pro/debtors"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-lg bg-blue-vivid px-8 py-4 text-base font-semibold text-white shadow-btn-primary transition-all hover:-translate-y-0.5 hover:bg-blue-sky hover:shadow-btn-primary-hover"
