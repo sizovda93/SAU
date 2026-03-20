@@ -9,7 +9,7 @@ import { toast } from "@/hooks/use-toast";
 
 export const leadFormSchema = z.object({
   full_name: z.string().min(5, "Укажите ФИО полностью"),
-  phone: z.string().min(10, "Укажите телефон"),
+  phone: z.string().min(7, "Укажите телефон"),
   email: z.string().email("Укажите корректный email"),
   promo_code: z.string().optional(),
 });
@@ -30,12 +30,13 @@ const defaultValues: LeadFormValues = {
   promo_code: "",
 };
 
-const fields = [
+const mainFields = [
   { name: "full_name" as const, label: "ФИО", placeholder: "Иванов Иван Иванович", icon: User, type: "text" },
   { name: "phone" as const, label: "Телефон", placeholder: "+7 (999) 123-45-67", icon: Phone, type: "tel" },
   { name: "email" as const, label: "Email", placeholder: "name@example.com", icon: Mail, type: "email" },
-  { name: "promo_code" as const, label: "Промокод", placeholder: "Если есть", icon: Tag, type: "text" },
 ];
+
+const promoField = { name: "promo_code" as const, label: "Промокод", placeholder: "Если есть", icon: Tag, type: "text" };
 
 const LeadForm = ({
   source,
@@ -103,50 +104,67 @@ const LeadForm = ({
 
   return (
     <form onSubmit={onSubmit} className={className}>
-      <div className="space-y-4">
-        {fields.map((field) => {
+      <div className="space-y-3.5">
+        {mainFields.map((field) => {
           const error = errors[field.name];
           return (
             <div key={field.name}>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400">
+              <label className="mb-1 block text-[11px] font-medium tracking-wide text-slate-400">
                 {field.label}
               </label>
               <div className="relative">
-                <field.icon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-300" />
+                <field.icon className="pointer-events-none absolute left-3.5 top-1/2 h-[15px] w-[15px] -translate-y-1/2 text-slate-300/80" />
                 <input
                   type={field.type}
                   placeholder={field.placeholder}
                   {...register(field.name)}
-                  className={`h-12 w-full rounded-xl border bg-slate-50/80 pl-11 pr-4 text-sm text-navy outline-none transition-all placeholder:text-slate-300 focus:border-blue-vivid focus:bg-white focus:ring-2 focus:ring-blue-vivid/20 ${
-                    error ? "border-red-300 bg-red-50/50" : "border-slate-200"
+                  className={`h-11 w-full rounded-lg border bg-white pl-10 pr-4 text-sm text-navy outline-none transition-all placeholder:text-slate-300/70 focus:border-[#4A8AFF] focus:ring-1 focus:ring-[#4A8AFF]/15 ${
+                    error ? "border-red-300/80 bg-red-50/30" : "border-slate-200/80"
                   }`}
                 />
               </div>
               {error && (
-                <p className="mt-1 text-xs text-red-500">{error.message}</p>
+                <p className="mt-0.5 text-[11px] text-red-400">{error.message}</p>
               )}
             </div>
           );
         })}
+
+        {/* Promo code — secondary field */}
+        <div>
+          <label className="mb-1 block text-[11px] font-medium tracking-wide text-slate-300">
+            {promoField.label}
+          </label>
+          <div className="relative">
+            <promoField.icon className="pointer-events-none absolute left-3.5 top-1/2 h-[15px] w-[15px] -translate-y-1/2 text-slate-200" />
+            <input
+              type={promoField.type}
+              placeholder={promoField.placeholder}
+              {...register(promoField.name)}
+              className="h-10 w-full rounded-lg border border-slate-200/60 bg-white/60 pl-10 pr-4 text-sm text-navy outline-none transition-all placeholder:text-slate-300/50 focus:border-[#4A8AFF] focus:ring-1 focus:ring-[#4A8AFF]/15"
+            />
+          </div>
+        </div>
       </div>
 
       <button
         type="submit"
         disabled={submitting}
-        className="mt-6 flex h-13 w-full items-center justify-center gap-2 rounded-xl bg-blue-vivid text-sm font-semibold text-white shadow-lg shadow-blue-vivid/25 transition-all hover:-translate-y-0.5 hover:bg-blue-sky hover:shadow-xl hover:shadow-blue-vivid/30 disabled:opacity-60 disabled:hover:translate-y-0"
+        className="mt-5 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#2A6DFF] text-[13px] font-semibold text-white shadow-md shadow-[#2A6DFF]/20 transition-all hover:-translate-y-0.5 hover:bg-[#3B7AFF] hover:shadow-lg hover:shadow-[#2A6DFF]/25 disabled:opacity-60 disabled:hover:translate-y-0"
       >
         {submitting ? (
-          <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+          <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
         ) : (
           <>
             {submitLabel}
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3.5 w-3.5" />
           </>
         )}
       </button>
 
-      <p className="mt-4 text-center text-xs leading-relaxed text-slate-400">
-        Нажимая кнопку, вы соглашаетесь на обработку персональных данных
+      <p className="mt-3 text-center text-[10px] leading-relaxed text-slate-300">
+        Нажимая кнопку, вы соглашаетесь на{" "}
+        <span className="underline underline-offset-2">обработку персональных данных</span>
       </p>
     </form>
   );

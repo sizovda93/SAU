@@ -41,15 +41,15 @@ const LeadCaptureSection = () => {
             </div>
           </div>
 
-          <div className="rounded-[32px] border border-[#DDE7F3] bg-off-white p-8 shadow-soft md:p-10">
-            <div className="mb-6">
-              <div className="mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-blue-vivid">
+          <div className="rounded-[28px] border border-[#E2E8F0]/60 bg-gradient-to-b from-white to-[#F5F7FA] p-8 shadow-[0_8px_40px_-12px_rgba(0,24,51,0.08)] md:p-10">
+            <div className="mb-7">
+              <div className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#2A6DFF]/70">
                 Форма заявки
               </div>
-              <h3 className="mb-3 text-2xl font-bold tracking-tight text-navy md:text-[2rem]">
+              <h3 className="mb-2.5 text-2xl font-bold tracking-tight text-navy md:text-[1.85rem] md:leading-[1.2]">
                 Оставьте контакты, и мы свяжемся с вами
               </h3>
-              <p className="text-slate">
+              <p className="max-w-[380px] text-[15px] leading-relaxed text-slate/80">
                 Заполните форму, чтобы получить персональную консультацию и демонстрацию платформы.
               </p>
             </div>

@@ -54,8 +54,18 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur-md">
       <div className="container relative flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 font-logo text-2xl font-bold uppercase tracking-wider text-navy">
-          <svg viewBox="0 0 24 24" className="h-6 w-6 fill-blue-vivid">
-            <path d="M7 7h10v3l-4 4 4 4v3H7v-3l4-4-4-4z" fill="currentColor" />
+          <svg viewBox="0 0 64 64" className="h-8 w-8">
+            <circle cx="32" cy="32" r="30" fill="#C8A84E" />
+            <circle cx="32" cy="32" r="26" fill="#3B5998" />
+            <g fill="#ffffff">
+              <polygon points="32,14 19,23 45,23" />
+              <rect x="18" y="23" width="28" height="2.5" />
+              <rect x="21" y="26" width="4" height="14" rx="1" />
+              <rect x="30" y="26" width="4" height="14" rx="1" />
+              <rect x="39" y="26" width="4" height="14" rx="1" />
+              <rect x="18" y="40" width="28" height="3" rx="0.5" />
+              <rect x="16" y="43" width="32" height="2.5" rx="0.5" />
+            </g>
           </svg>
           SAU.PRO
         </Link>

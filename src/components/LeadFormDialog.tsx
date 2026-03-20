@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, User, Phone, Mail, Tag } from "lucide-react";
+import { Send } from "lucide-react";
 
 import LeadForm from "@/components/LeadForm";
 import {
@@ -30,28 +30,27 @@ const LeadFormDialog = ({
         </button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-[520px] gap-0 overflow-hidden rounded-3xl border-0 bg-white p-0 shadow-2xl">
+      <DialogContent className="max-w-[480px] gap-0 overflow-hidden rounded-2xl border-0 bg-[#F4F6F9] p-0 shadow-2xl">
         {/* Header */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-[#0A1F44] via-[#122B5C] to-[#1A3F7A] px-8 pb-8 pt-8">
-          {/* Decorative circles */}
-          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/5" />
-          <div className="absolute -right-4 top-12 h-20 w-20 rounded-full bg-white/5" />
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#0F2341] to-[#1B3A6B] px-6 pb-5 pt-5">
+          {/* Subtle decorative glow */}
+          <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-white/[0.03]" />
 
-          <DialogHeader className="relative z-10 space-y-2 text-left">
-            <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm">
-              <Send className="h-5 w-5 text-white" />
+          <DialogHeader className="relative z-10 space-y-1.5 text-left">
+            <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.08]">
+              <Send className="h-4 w-4 text-white/80" />
             </div>
-            <DialogTitle className="text-2xl font-bold tracking-tight text-white">
+            <DialogTitle className="text-xl font-semibold tracking-tight text-white">
               Заявка на подключение
             </DialogTitle>
-            <DialogDescription className="text-sm leading-relaxed text-white/60">
+            <DialogDescription className="text-[13px] leading-relaxed text-white/50">
               Заполните форму, и мы свяжемся с вами, чтобы показать платформу и обсудить условия.
             </DialogDescription>
           </DialogHeader>
         </div>
 
         {/* Form */}
-        <div className="px-8 pb-8 pt-6">
+        <div className="px-6 pb-6 pt-5">
           <LeadForm source="hero_dialog" onSuccess={() => setOpen(false)} />
         </div>
       </DialogContent>
