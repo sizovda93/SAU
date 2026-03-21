@@ -15,6 +15,8 @@ const desktopSections = [
     items: [
       { key: "screenshot_case_card", label: "Карточка дела" },
       { key: "screenshot_case_card_2", label: "Карточка дела 2" },
+      { key: "screenshot_case_card_3", label: "Карточка дела 3" },
+      { key: "screenshot_case_card_4", label: "Карточка дела 4" },
     ],
   },
   {
