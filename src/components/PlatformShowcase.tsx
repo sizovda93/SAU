@@ -7,7 +7,6 @@ const desktopSections = [
     title: "Личный кабинет партнера",
     items: [
       { key: "screenshot_partner_cabinet", label: "Личный кабинет партнера" },
-      { key: "screenshot_partner_cabinet_2", label: "Личный кабинет партнера 2" },
     ],
   },
   {
@@ -27,10 +26,12 @@ const desktopSections = [
     ],
   },
   {
-    title: "Подача заявления",
+    title: "Передача дела",
     items: [
-      { key: "screenshot_case_submission", label: "Подача заявления" },
-      { key: "screenshot_case_submission_2", label: "Подача заявления 2" },
+      { key: "screenshot_case_submission", label: "Передача дела" },
+      { key: "screenshot_case_submission_2", label: "Передача дела 2" },
+      { key: "screenshot_case_submission_3", label: "Передача дела 3" },
+      { key: "screenshot_case_submission_4", label: "Передача дела 4" },
     ],
   },
   {
