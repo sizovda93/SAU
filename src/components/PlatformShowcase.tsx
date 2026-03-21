@@ -2,15 +2,42 @@ import { useState, useEffect } from "react";
 import { getSettings, SiteSetting } from "@/lib/api";
 import { Monitor, Smartphone, X } from "lucide-react";
 
-const desktopScreenshots = [
-  { key: "screenshot_partner_cabinet", label: "Личный кабинет партнера" },
-  { key: "screenshot_case_card", label: "Карточка дела" },
-  { key: "screenshot_chat", label: "Внутренний чат — диалоги" },
-  { key: "screenshot_chat_2", label: "Внутренний чат — каналы" },
-  { key: "screenshot_case_submission", label: "Подача дела" },
-  { key: "screenshot_academy", label: "Академия — курсы" },
-  { key: "screenshot_academy_2", label: "Академия — курс" },
-  { key: "screenshot_academy_3", label: "Академия — урок" },
+const desktopSections = [
+  {
+    title: "Личный кабинет партнера",
+    items: [
+      { key: "screenshot_partner_cabinet", label: "Личный кабинет партнера" },
+      { key: "screenshot_partner_cabinet_2", label: "Личный кабинет партнера 2" },
+    ],
+  },
+  {
+    title: "Карточка дела",
+    items: [
+      { key: "screenshot_case_card", label: "Карточка дела" },
+      { key: "screenshot_case_card_2", label: "Карточка дела 2" },
+    ],
+  },
+  {
+    title: "Внутренний чат",
+    items: [
+      { key: "screenshot_chat", label: "Диалоги" },
+      { key: "screenshot_chat_2", label: "Каналы" },
+    ],
+  },
+  {
+    title: "Подача заявления",
+    items: [
+      { key: "screenshot_case_submission", label: "Подача заявления" },
+      { key: "screenshot_case_submission_2", label: "Подача заявления 2" },
+    ],
+  },
+  {
+    title: "Академия банкротства",
+    items: [
+      { key: "screenshot_academy", label: "Курсы" },
+      { key: "screenshot_academy_2", label: "Курс" },
+    ],
+  },
 ];
 
 const partnerMobileScreenshots = [
@@ -19,9 +46,6 @@ const partnerMobileScreenshots = [
   { key: "screenshot_mobile_partner_3", label: "Уведомления партнера" },
 ];
 
-const creditorMobileScreenshots = [
-  { key: "screenshot_mobile_creditor", label: "Мобильное приложение для доверителя" },
-];
 
 const IPhoneFrame = ({ children, label, onClick }: { children: React.ReactNode; label: string; onClick?: () => void }) => (
   <div className="flex flex-col items-center gap-4">
@@ -104,39 +128,46 @@ const PlatformShowcase = () => {
           </p>
         </div>
 
-        {/* Desktop screenshots */}
-        <div className="grid gap-8 lg:grid-cols-2">
-          {desktopScreenshots.map((item) => {
-            const url = settings[item.key];
-            return (
-              <div
-                key={item.key}
-                className={`group overflow-hidden rounded-[28px] border border-white/80 bg-white shadow-soft transition-all hover:-translate-y-1 hover:shadow-float ${url ? "cursor-pointer" : ""}`}
-                onClick={() => url && openLightbox(url, item.label)}
-              >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-50">
-                  {url ? (
-                    <img
-                      src={url}
-                      alt={item.label}
-                      className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
-                  ) : (
-                    <div className="flex h-full flex-col items-center justify-center gap-3 text-slate-300">
-                      <Monitor className="h-12 w-12" />
-                      <span className="text-sm">Скриншот скоро появится</span>
+        {/* Desktop screenshots by section */}
+        {desktopSections.map((section, idx) => (
+          <div key={section.title} className={idx > 0 ? "mt-16" : ""}>
+            <h3 className="mb-8 text-center text-2xl font-bold tracking-tight text-navy md:text-3xl">
+              {section.title}
+            </h3>
+            <div className={`grid gap-8 ${section.items.length === 1 ? "mx-auto max-w-3xl" : "lg:grid-cols-2"}`}>
+              {section.items.map((item) => {
+                const url = settings[item.key];
+                return (
+                  <div
+                    key={item.key}
+                    className={`group overflow-hidden rounded-[28px] border border-white/80 bg-white shadow-soft transition-all hover:-translate-y-1 hover:shadow-float ${url ? "cursor-pointer" : ""}`}
+                    onClick={() => url && openLightbox(url, item.label)}
+                  >
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-50">
+                      {url ? (
+                        <img
+                          src={url}
+                          alt={item.label}
+                          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                        />
+                      ) : (
+                        <div className="flex h-full flex-col items-center justify-center gap-3 text-slate-300">
+                          <Monitor className="h-12 w-12" />
+                          <span className="text-sm">Скриншот скоро появится</span>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <div className="px-6 py-5">
-                  <h3 className="text-lg font-bold tracking-tight text-navy">
-                    {item.label}
-                  </h3>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                    <div className="px-6 py-5">
+                      <h3 className="text-lg font-bold tracking-tight text-navy">
+                        {item.label}
+                      </h3>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
 
         {/* Partner mobile screenshots */}
         <h3 className="mb-8 mt-20 text-center text-2xl font-bold tracking-tight text-navy md:text-3xl">
@@ -164,31 +195,6 @@ const PlatformShowcase = () => {
           })}
         </div>
 
-        {/* Creditor mobile screenshot */}
-        <h3 className="mb-8 mt-20 text-center text-2xl font-bold tracking-tight text-navy md:text-3xl">
-          Приложение для доверителя
-        </h3>
-        <div className="flex justify-center">
-          {creditorMobileScreenshots.map((item) => {
-            const url = settings[item.key];
-            return (
-              <IPhoneFrame key={item.key} label={item.label} onClick={url ? () => openLightbox(url, item.label) : undefined}>
-                {url ? (
-                  <img
-                    src={url}
-                    alt={item.label}
-                    className="h-full w-full object-cover object-top"
-                  />
-                ) : (
-                  <div className="flex h-full flex-col items-center justify-center gap-3 text-slate-300">
-                    <Smartphone className="h-12 w-12" />
-                    <span className="text-sm">Скриншот скоро появится</span>
-                  </div>
-                )}
-              </IPhoneFrame>
-            );
-          })}
-        </div>
       </div>
 
       {/* Lightbox */}

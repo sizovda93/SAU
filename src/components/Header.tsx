@@ -68,7 +68,7 @@ const Header = () => {
             </g>
           </svg>
           <div className="flex flex-col leading-tight">
-            <span className="font-logo text-2xl font-bold uppercase tracking-wider text-navy">SAU.PRO</span>
+            <span className="font-logo text-2xl font-bold uppercase tracking-wider"><span className="text-blue-vivid">SAU</span><span className="text-navy">.PRO</span></span>
             <span className="text-[0.6rem] font-medium uppercase tracking-wide text-slate-400">Система арбитражного управления</span>
           </div>
         </Link>
